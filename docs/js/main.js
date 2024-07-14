@@ -367,7 +367,7 @@ function onBodyLoad() {
         });
     }
 
-    output_matrix_value.innerHTML = "."
+    // output_matrix_value.innerHTML = ""
 }
 
 

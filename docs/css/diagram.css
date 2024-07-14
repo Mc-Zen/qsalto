@@ -15,6 +15,10 @@ canvas {
     box-shadow: 0px 0px 14px 0 #dadada;
 }
 
+.figure-wrapper {
+    margin-bottom: 3em;
+}
+
 .qwe-matrix {
     width: 80pt;
     height: 80pt;
@@ -141,4 +145,8 @@ canvas {
     margin-top: -8pt;
     top: -2pt;
     position: relative;
+}
+
+.entry-label {
+    color: gray;
 }

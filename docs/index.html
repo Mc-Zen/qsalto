@@ -34,7 +34,7 @@
     <a href="#main-content" class="skip-to-content">Skip to content</a>
 
     <div class="header">
-        <img src="media/logo.svg" alt="Qsalto"/>
+        <img src="media/logo.svg" alt="Qsalto" />
     </div>
 
 
@@ -55,75 +55,87 @@
                     <label for="symlog">symlog</label>
                 </div>
             </div>
-            <div class="matrix-container">
-                <div class="matrix-wrapper" id="c-M">
-                    <div>\(M\)</div>
-                    <canvas class="qwe-matrix" id="M" width="10" height="10"></canvas>
-                </div>
-                <div class="matrix-wrapper" id="c-M_">
-                    <div>\(M'\)</div>
-                    <canvas class="qwe-matrix" id="M_" width="10" height="10"></canvas>
-                </div>
-                <div class="matrix-wrapper" id="c-M__">
-                    <div>\(M''\)</div>
-                    <canvas class="qwe-matrix" id="M__" width="10" height="10"></canvas>
-                </div>
-                    
-                <div class="matrix-wrapper" id="c-T_">
-                    <div>\(T'\)</div>
-                    <canvas class="qwe-matrix" id="T_" width="10" height="10"></canvas>
+            <div class="figure-wrapper">
+                <div class="matrix-container">
+                    <div class="matrix-wrapper" id="c-M">
+                        <div>\(M\)</div>
+                        <canvas class="qwe-matrix" id="M" width="10" height="10"></canvas>
+                    </div>
+                    <div class="matrix-wrapper" id="c-M_">
+                        <div>\(M'\)</div>
+                        <canvas class="qwe-matrix" id="M_" width="10" height="10"></canvas>
+                    </div>
+                    <div class="matrix-wrapper" id="c-M__">
+                        <div>\(M''\)</div>
+                        <canvas class="qwe-matrix" id="M__" width="10" height="10"></canvas>
+                    </div>
+
+                    <div class="matrix-wrapper" id="c-T_">
+                        <div>\(T'\)</div>
+                        <canvas class="qwe-matrix" id="T_" width="10" height="10"></canvas>
+                    </div>
+
+                    <div class="matrix-wrapper" id="c-T_1">
+                        <div>\(T'^{-1}\)</div>
+                        <canvas class="qwe-matrix" id="T_1" width="10" height="10"></canvas>
+                    </div>
+                    <div class="matrix-wrapper" id="c-T__">
+                        <div>\(T''\)</div>
+                        <canvas class="qwe-matrix" id="T__" width="10" height="10"></canvas>
+                    </div>
+                    <div class="matrix-wrapper" id="c-T__1">
+                        <div>\(T''^{-1}\)</div>
+                        <canvas class="qwe-matrix" id="T__1" width="10" height="10"></canvas>
+                    </div>
+                    <div class="matrix-wrapper" id="c-T___">
+                        <div>\(T'''\)</div>
+                        <canvas class="qwe-matrix" id="T___" width="10" height="10"></canvas>
+                    </div>
+                    <div class="matrix-wrapper" id="c-T___1">
+                        <div>\(T'''^{-1}\)</div>
+                        <canvas class="qwe-matrix" id="T___1" width="10" height="10"></canvas>
+                    </div>
+
+                    <div class="qwe-wrapper bad-qwe" id="c-a">
+                        \(\mathbf{a}[\rho]\)
+                    </div>
+                    <div class="qwe-wrapper bad-qwe" id="c-b">
+                        \(\mathbf{b}[\rho]\)
+                    </div>
+
+                    <div class="qwe-wrapper good-qwe" id="c-a_">
+                        \(\mathbf{a'}[\rho]\)
+                    </div>
+                    <div class="qwe-wrapper good-qwe" id="c-b_">
+                        \(\mathbf{b'}[\rho]\)
+                    </div>
+
+                    <div class="qwe-wrapper good-qwe" id="c-a__">
+                        \(\mathbf{a''}[\rho]\)
+                    </div>
+                    <div class="qwe-wrapper good-qwe" id="c-b__">
+                        \(\mathbf{b''}[\rho]\)
+                    </div>
                 </div>
 
-                <div class="matrix-wrapper" id="c-T_1">
-                    <div>\(T'^{-1}\)</div>
-                    <canvas class="qwe-matrix" id="T_1" width="10" height="10"></canvas>
-                </div>
-                <div class="matrix-wrapper" id="c-T__">
-                    <div>\(T''\)</div>
-                    <canvas class="qwe-matrix" id="T__" width="10" height="10"></canvas>
-                </div>
-                <div class="matrix-wrapper" id="c-T__1">
-                    <div>\(T''^{-1}\)</div>
-                    <canvas class="qwe-matrix" id="T__1" width="10" height="10"></canvas>
-                </div>
-                <div class="matrix-wrapper" id="c-T___">
-                    <div>\(T'''\)</div>
-                    <canvas class="qwe-matrix" id="T___" width="10" height="10"></canvas>
-                </div>
-                <div class="matrix-wrapper" id="c-T___1">
-                    <div>\(T'''^{-1}\)</div>
-                    <canvas class="qwe-matrix" id="T___1" width="10" height="10"></canvas>
-                </div>
-
-                <div class="qwe-wrapper bad-qwe" id="c-a">
-                    \(\mathbf{a}[\rho]\)
-                </div>
-                <div class="qwe-wrapper bad-qwe" id="c-b">
-                    \(\mathbf{b}[\rho]\)
-                </div>
-
-                <div class="qwe-wrapper good-qwe" id="c-a_">
-                    \(\mathbf{a'}[\rho]\)
-                </div>
-                <div class="qwe-wrapper good-qwe" id="c-b_">
-                    \(\mathbf{b'}[\rho]\)
-                </div>
-
-                <div class="qwe-wrapper good-qwe" id="c-a__">
-                    \(\mathbf{a''}[\rho]\)
-                </div>
-                <div class="qwe-wrapper good-qwe" id="c-b__">
-                    \(\mathbf{b''}[\rho]\)
-                </div>
+                <span class="entry-label"> Hovered Entry:</span>
+                <span id="matrix_name"></span>
+                <span id="matrix_value"></span>
             </div>
 
-            <span id="matrix_name"></span>
-            <span id="matrix_value"></span>
-                
+
+            <ul>
+                <li>
+                    Read the <a href="paper.html">paper</a> for more information.
+                </li>
+                <li>
+                    Visit the <a href="https://github.com/Mc-Zen/q-salto">GitHub repository</a>.
+                </li>
+            </ul>
         </main>
         <footer>
             <p>
-                <!-- © Mc-Zen 2024 -->
+                © Mc-Zen 2024
             </p>
         </footer>
     </div>
