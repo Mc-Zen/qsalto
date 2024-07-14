@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="description" content="Q-salto">
+    <meta name="author" content="Mc-Zen">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="media/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="media/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="media/favicon-16x16.png">
+    <link rel="manifest" href="media/site.webmanifest">
+    <link rel="mask-icon" href="media/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="media/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="media/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/diagram.css">
+
+    <title>Q-salto</title>
+
+    <!-- <script>// prevent css transitions on start</script> -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="js/leader-line.min.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/add-arrows.js"></script>
+</head>
+
+<body onload="onBodyLoad()">
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+    <div class="header">
+        <img src="media/logo.svg" alt="Qsalto"/>
+    </div>
+
+
+
+    <div class="main-wrapper">
+        <main id="main-content">
+
+            <div class="option-bar">
+                <div>
+                    <label for="n">\(n=\)</label>
+                    <input type="number" id="input_n" name="n" value="5" min="2" max="100">
+                </div>
+                <div>
+                    <input type="radio" id="linear" name="norm" value="linear">
+                    <label for="linear">linear</label>
+
+                    <input type="radio" id="symlog" name="norm" value="symlog" checked>
+                    <label for="symlog">symlog</label>
+                </div>
+            </div>
+            <div class="matrix-container">
+                <div class="matrix-wrapper" id="c-M">
+                    <div>\(M\)</div>
+                    <canvas class="qwe-matrix" id="M" width="10" height="10"></canvas>
+                </div>
+                <div class="matrix-wrapper" id="c-M_">
+                    <div>\(M'\)</div>
+                    <canvas class="qwe-matrix" id="M_" width="10" height="10"></canvas>
+                </div>
+                <div class="matrix-wrapper" id="c-M__">
+                    <div>\(M''\)</div>
+                    <canvas class="qwe-matrix" id="M__" width="10" height="10"></canvas>
+                </div>
+                    
+                <div class="matrix-wrapper" id="c-T_">
+                    <div>\(T'\)</div>
+                    <canvas class="qwe-matrix" id="T_" width="10" height="10"></canvas>
+                </div>
+
+                <div class="matrix-wrapper" id="c-T_1">
+                    <div>\(T'^{-1}\)</div>
+                    <canvas class="qwe-matrix" id="T_1" width="10" height="10"></canvas>
+                </div>
+                <div class="matrix-wrapper" id="c-T__">
+                    <div>\(T''\)</div>
+                    <canvas class="qwe-matrix" id="T__" width="10" height="10"></canvas>
+                </div>
+                <div class="matrix-wrapper" id="c-T__1">
+                    <div>\(T''^{-1}\)</div>
+                    <canvas class="qwe-matrix" id="T__1" width="10" height="10"></canvas>
+                </div>
+                <div class="matrix-wrapper" id="c-T___">
+                    <div>\(T'''\)</div>
+                    <canvas class="qwe-matrix" id="T___" width="10" height="10"></canvas>
+                </div>
+                <div class="matrix-wrapper" id="c-T___1">
+                    <div>\(T'''^{-1}\)</div>
+                    <canvas class="qwe-matrix" id="T___1" width="10" height="10"></canvas>
+                </div>
+
+                <div class="qwe-wrapper bad-qwe" id="c-a">
+                    \(\mathbf{a}[\rho]\)
+                </div>
+                <div class="qwe-wrapper bad-qwe" id="c-b">
+                    \(\mathbf{b}[\rho]\)
+                </div>
+
+                <div class="qwe-wrapper good-qwe" id="c-a_">
+                    \(\mathbf{a'}[\rho]\)
+                </div>
+                <div class="qwe-wrapper good-qwe" id="c-b_">
+                    \(\mathbf{b'}[\rho]\)
+                </div>
+
+                <div class="qwe-wrapper good-qwe" id="c-a__">
+                    \(\mathbf{a''}[\rho]\)
+                </div>
+                <div class="qwe-wrapper good-qwe" id="c-b__">
+                    \(\mathbf{b''}[\rho]\)
+                </div>
+            </div>
+
+            <span id="matrix_name"></span>
+            <span id="matrix_value"></span>
+                
+        </main>
+        <footer>
+            <p>
+                <!-- © Mc-Zen 2024 -->
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>

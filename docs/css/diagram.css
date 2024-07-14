@@ -1,0 +1,144 @@
+
+canvas {
+    image-rendering: optimizeSpeed;
+    /* Older versions of FF          */
+    image-rendering: -moz-crisp-edges;
+    /* FF 6.0+                       */
+    image-rendering: -webkit-optimize-contrast;
+    /* Safari                        */
+    image-rendering: -o-crisp-edges;
+    /* OS X & Windows Opera (12.02+) */
+    image-rendering: pixelated;
+    /* Awesome future-browsers       */
+    -ms-interpolation-mode: nearest-neighbor;
+    /* IE                            */
+    box-shadow: 0px 0px 14px 0 #dadada;
+}
+
+.qwe-matrix {
+    width: 80pt;
+    height: 80pt;
+    image-rendering: pixelated;
+    z-index: 100;
+    box-shadow: 0px 0px 7px 0 #bcbcbc;
+}
+
+.matrix-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.matrix-container {
+    display: grid;
+    grid-auto-columns: max-content;
+    grid-column-gap: 15pt;
+}
+
+#c-M {
+    grid-row: 1;
+    grid-column: 3;
+}
+
+#c-T_1 {
+    grid-row: 2;
+    grid-column: 2;
+    align-items: start;
+}
+
+#c-T_ {
+    grid-row: 2;
+    grid-column: 4;
+    align-items: end;
+}
+
+
+#c-T__1 {
+    grid-row: 3;
+    grid-column: 1;
+}
+
+#c-T__ {
+    grid-row: 3;
+    grid-column: 5;
+}
+
+#c-M_ {
+    grid-row: 3;
+    grid-column: 3;
+}
+
+
+#c-T___1 {
+    grid-row: 4;
+    grid-column: 2;
+    align-items: start;
+}
+
+#c-T___ {
+    grid-row: 4;
+    grid-column: 4;
+    align-items: end;
+}
+
+
+
+#c-M__ {
+    grid-row: 5;
+    grid-column: 3;
+}
+
+
+
+#c-a {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+#c-b {
+    grid-row: 1;
+    grid-column: 4;
+}
+
+#c-a_ {
+    grid-row: 3;
+    grid-column: 2;
+}
+
+#c-b_ {
+    grid-row: 3;
+    grid-column: 4;
+}
+
+#c-a__ {
+    grid-row: 5;
+    grid-column: 2;
+}
+
+#c-b__ {
+    grid-row: 5;
+    grid-column: 4;
+}
+
+.qwe-wrapper {
+    padding: 4pt;
+    border-radius: 3pt;
+    align-self: center;
+    justify-self: center;
+}
+
+.bad-qwe {
+    background: #facdbb;
+}
+
+.good-qwe {
+    background: #d5eedc;
+}
+
+
+.matrix-wrapper > div {
+    margin-top: -8pt;
+    top: -2pt;
+    position: relative;
+}

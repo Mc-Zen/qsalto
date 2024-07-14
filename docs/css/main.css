@@ -1,0 +1,83 @@
+.skip-to-content {
+    padding: 1rem;
+    position: absolute;
+    z-index: 21;
+    background: rgb(128 128 128 / 81%);
+    color: white;
+    font-weight: bold;
+    font-size: small;
+    text-transform: uppercase;
+    text-decoration: none;
+    transform: translateY(-120%);
+    transition: transform .4s;
+}
+
+.skip-to-content:focus {
+    transform: translateY(0);
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+    text-align: center;
+    font-size: 25px;
+}
+
+.header img {
+    max-width: 100%;
+    width: 9cm;
+}
+
+/* #main-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+#main-wrapper {
+    background: yellow;
+}
+
+#main-content {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 1em;
+    /* box-shadow: 0px 0px 14px 0 #dadada; */
+    border-radius: 5pt;
+}
+
+.option-bar {
+    margin-top: .5em;
+    margin-bottom: 2em;
+    padding: .5em 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    background: #eeeeee
+}
+
+
+#input_n {
+    background: #c2c9ff;
+    border: 2px solid #9797fc;
+    border-radius: 4pt;
+    width: 3em;
+}
+
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 50%;
+    background: none;
+    border: 3px solid #FFF;
+    box-shadow: 0 0 0 1px gray;
+    width: 9pt;
+    height: 9pt;
+}
+
+input:checked {
+    background: #9797fc;
+    box-shadow: 0 0 0 1px #9797fc;
+
+}
