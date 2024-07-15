@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qsalto"
+version = "1.0.0"
+description = "Transformations between quantum weight enumerators"
+readme = "README.md"
+requires-python = ">=3.7"
+authors = [{ name = "Mc-Zen"}]
+license = { file = "LICENSE.txt" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+keywords = ["quantum information", "quantum weight enumerators", "Shor-Laflamme", "Rains unitary", "Rains shadow"]
+dependencies = [
+    "numpy >= 1.22",
+    "mpmath >= 1.2.2"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Mc-Zen/qsalto"
+"Bug Tracker" = "https://github.com/Mc-Zen/qsalto/issues"
