@@ -18,7 +18,7 @@ classifiers = [
 keywords = ["quantum information", "quantum weight enumerators", "Shor-Laflamme", "Rains unitary", "Rains shadow"]
 dependencies = [
     "numpy >= 1.22",
-    "scipy >= 1.6"
+    "scipy >= 1.8.1"
 ]
 
 [project.urls]
