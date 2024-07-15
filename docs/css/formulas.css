@@ -1,0 +1,15 @@
+
+.qwe-formulas {
+    display: grid;
+    grid-template-columns: auto auto;
+    display: none;
+    margin-top: 1.8em;
+}
+
+#open-grid {
+    width: 1cm;
+    height: 1cm;
+    position: absolute;
+    right: 0;
+    /* background-color: black; */
+}

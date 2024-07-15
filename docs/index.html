@@ -19,6 +19,7 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/diagram.css">
+    <link rel="stylesheet" href="css/formulas.css">
 
     <title>Q-salto</title>
 
@@ -31,6 +32,7 @@
 </head>
 
 <body onload="onBodyLoad()">
+    <div id="open-grid"></div>
     <a href="#main-content" class="skip-to-content">Skip to content</a>
 
     <div class="header">
@@ -121,6 +123,29 @@
                 <span class="entry-label"> Hovered Entry:</span>
                 <span id="matrix_name"></span>
                 <span id="matrix_value"></span>
+
+
+                <div class="qwe-formulas">
+                    <div>
+                        $$ a_j[\rho] = \frac{1}{2^n} \sum_{|P|=j} \mathrm{Tr}[\rho P]^2 $$
+                    </div>
+                    <div>
+                        $$ b_j[\rho] = \frac{1}{2^n} \sum_{|P|=j} \mathrm{Tr}[\rho P\rho P] $$
+                    </div>
+                    <div>
+                        $$ a'_j[\rho] = \frac{1}{\binom{n}{j}} \sum_{\substack{S\subseteq \{1,\dots,n\}\\|S|=j}} \mathrm{Tr}[\rho_S^2] $$
+                    </div>
+                    <div>
+                        $$ b'_j[\rho] = \frac{1}{\binom{n}{n-j}} \sum_{\substack{S\subseteq \{1,\dots,n\}\\|S|=n-j}} \mathrm{Tr}[\rho_S^2] $$
+                    </div>
+                    <div>
+                        $$ a''_j[\rho] = \frac{1}{2^n} \sum_{|P|=j} \mathrm{Tr}[\rho P \tilde{\rho} P] $$
+                    </div>
+                    <div>
+                        $$ b''_j[\rho] = \frac{(-1)^{(n-j)}}{2^n} \sum_{|P|=j} \mathrm{Tr}[\rho P \tilde{\rho} P] $$
+                    </div>
+
+                </div>
             </div>
 
 

@@ -367,6 +367,10 @@ function onBodyLoad() {
         });
     }
 
+    document.getElementById("open-grid").addEventListener("click", (evt) => {
+        console.log("asd")
+        document.getElementsByClassName("qwe-formulas")[0].style.display = "grid";
+    });
     // output_matrix_value.innerHTML = ""
 }
 
