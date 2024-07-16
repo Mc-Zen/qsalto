@@ -2,7 +2,7 @@
 
 ![](docs/media/logo.svg)
 
-_flip your bins_
+_transform your quantum weight enumerators_
 
 
 

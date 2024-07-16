@@ -354,7 +354,7 @@ window.addEventListener("load", function() {
             const y = clamp(Math.floor((evt.clientY - bounds.top) / bounds.height * canvas.height), 0, n + 1);
 
             
-            output_matrix_value.innerHTML = "(" + y + "," + x + ") = " + matrix.matrix[y][x].toString().replace("-", "−")
+            output_matrix_value.innerHTML = "[" + y + "," + x + "] = " + matrix.matrix[y][x].toString().replace("-", "−")
             
             if (hovered_canvas != canvas) {
                 var MML = "http://www.w3.org/1998/Math/MathML";
