@@ -75,6 +75,16 @@ li {
     background: #eeeeee
 }
 
+#input-warning {
+    color: red;
+    position: absolute;
+    background: #ffe9e9;
+    border: 1pt solid red;
+    font-size: .8em;
+    margin-top: 4pt;
+    display: none;
+}
+
 
 #input_n {
     background: #c2c9ff;

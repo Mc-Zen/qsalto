@@ -31,7 +31,7 @@
     <script src="js/add-arrows.js"></script>
 </head>
 
-<body onload="onBodyLoad()">
+<body>
     <div id="open-grid"></div>
     <a href="#main-content" class="skip-to-content">Skip to content</a>
 
@@ -48,6 +48,7 @@
                 <div>
                     <label for="n">\(n=\)</label>
                     <input type="number" id="input_n" name="n" value="5" min="2" max="100">
+                    <div id="input-warning">This might take a while</div>
                 </div>
                 <div>
                     <input type="radio" id="linear" name="norm" value="linear">

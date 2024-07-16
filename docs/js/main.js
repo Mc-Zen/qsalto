@@ -321,7 +321,7 @@ function matrix_name_to_math(name) {
 let hovered_canvas = null
 
 
-function onBodyLoad() {
+window.addEventListener("load", function() { 
     const input_n = document.getElementById("input_n")
     const output_matrix_value = document.getElementById("matrix_value")
     const output_matrix_name = document.getElementById("matrix_name")
@@ -368,11 +368,22 @@ function onBodyLoad() {
     }
 
     document.getElementById("open-grid").addEventListener("click", (evt) => {
-        console.log("asd")
         document.getElementsByClassName("qwe-formulas")[0].style.display = "grid";
     });
     // output_matrix_value.innerHTML = ""
-}
+
+    
+    input_n.addEventListener("input", (evt) => {
+
+        let n = parseInt(input_n.value)
+        console.log(n)
+        if (!isNaN(n) && n > 150) {
+            document.getElementById("input-warning").style.display = "block";
+        } else {
+            document.getElementById("input-warning").style.display = "none";
+        }
+    });
+})
 
 
 
