@@ -7,7 +7,20 @@ def comb(n, k):
     return scomb(n, k, exact=True)
 
 
+
 def M(n: int) -> np.ndarray:
+    """Self-inverse transformation matrix between Shor-Laflamme distributions $a$ and $b$.
+
+    Parameters
+    ----------
+    n : int
+        Number of qubits
+
+    Returns
+    -------
+    np.ndarray
+        $(n+1)×(n+1)$ matrix.
+    """
     K = np.zeros([n + 1, n + 1])
     for k in range(n + 1):
         for l in range(n + 1):
@@ -21,14 +34,50 @@ def M(n: int) -> np.ndarray:
 
 
 def M1(n: int) -> np.ndarray:
+    """Self-inverse transformation matrix between quantum weight enumerators $a'$ and $b'$.
+
+    Parameters
+    ----------
+    n : int
+        Number of qubits
+
+    Returns
+    -------
+    np.ndarray
+        $(n+1)×(n+1)$ matrix.
+    """
     return np.fliplr(np.eye(n+1))
 
 
 def M2(n: int) -> np.ndarray:
+    """Self-inverse transformation matrix between quantum weight enumerators $a''$ and $b''$.
+
+    Parameters
+    ----------
+    n : int
+        Number of qubits
+
+    Returns
+    -------
+    np.ndarray
+        $(n+1)×(n+1)$ matrix.
+    """
     return np.diag(np.resize([1, -1], n+1)[::-1])
 
 
 def T2(n: int) -> np.ndarray:
+    """Transformation matrix from Shor-Laflamme enumerators $a$ to Rains shadow enumerators $a''$. 
+
+    Parameters
+    ----------
+    n : int
+        Number of qubits
+
+    Returns
+    -------
+    np.ndarray
+        $(n+1)×(n+1)$ matrix.
+    """
     K = M(n)
     for col in range(1, n+1, 2):
         K[:, col] *= -1.
@@ -36,6 +85,18 @@ def T2(n: int) -> np.ndarray:
 
 
 def iT2(n: int) -> np.ndarray:
+    """Transformation matrix from Rains shadow enumerators $a''$ to Shor-Laflamme enumerators $a$. 
+
+    Parameters
+    ----------
+    n : int
+        Number of qubits
+
+    Returns
+    -------
+    np.ndarray
+        $(n+1)×(n+1)$ matrix.
+    """
     K = M(n)
     for row in range(1, n+1, 2):
         K[row] *= -1.
@@ -43,6 +104,18 @@ def iT2(n: int) -> np.ndarray:
 
 
 def T1(n: int) -> np.ndarray:
+    """Transformation matrix from Shor-Laflamme enumerators $a$ to Rains unitary enumerators $a'$. 
+
+    Parameters
+    ----------
+    n : int
+        Number of qubits
+
+    Returns
+    -------
+    np.ndarray
+        $(n+1)×(n+1)$ matrix.
+    """
     K = np.zeros([n + 1, n + 1])
     for k in range(n + 1):
         for l in range(n + 1):
@@ -51,6 +124,18 @@ def T1(n: int) -> np.ndarray:
 
 
 def iT1(n: int) -> np.ndarray:
+    """Transformation matrix from Rains unitary enumerators $a'$ to Shor-Laflamme enumerators $a$. 
+
+    Parameters
+    ----------
+    n : int
+        Number of qubits
+
+    Returns
+    -------
+    np.ndarray
+        $(n+1)×(n+1)$ matrix.
+    """
     K = np.zeros([n + 1, n + 1])
     for k in range(n + 1):
         for l in range(n + 1):
@@ -59,6 +144,18 @@ def iT1(n: int) -> np.ndarray:
 
 
 def T3(n: int) -> np.ndarray:
+    """Transformation matrix from Rains' unitary enumerators $a'$ to Rains' shadow enumerators $a''$. 
+
+    Parameters
+    ----------
+    n : int
+        Number of qubits
+
+    Returns
+    -------
+    np.ndarray
+        $(n+1)×(n+1)$ matrix.
+    """
     K = np.zeros([n + 1, n + 1])
     for k in range(n + 1):
         for l in range(n + 1):
@@ -70,6 +167,18 @@ def T3(n: int) -> np.ndarray:
 
 
 def iT3(n: int) -> np.ndarray:
+    """Transformation matrix from Rains' shadow enumerators $a''$ to Rains' unitary enumerators $a'$. 
+
+    Parameters
+    ----------
+    n : int
+        Number of qubits
+
+    Returns
+    -------
+    np.ndarray
+        $(n+1)×(n+1)$ matrix.
+    """
     K = np.zeros([n + 1, n + 1])
     for k in range(n + 1):
         for l in range(n + 1):
