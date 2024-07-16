@@ -25,6 +25,26 @@ We provide both
 - a web viewer for visualizing the transformation matrices at https://mc-zen.github.io/qsalto.
 
 
+## Python package
+
+The python package `qsalto` can be installed via `pip install qsalto` and features functions to generate nine classes of transformation matrices. 
+
+
+|Matrix | Function | Transforms from ... | ... to | Self-inverse |
+|-------|----------|------|---|--|
+|$M$    |`M(n)`    |$\mathbf{a}$ |$\mathbf{b}$ |✅|
+|$M'$    |`M1(n)`    |$\mathbf{a'}$ |$\mathbf{b'}$ |✅|
+|$M''$    |`M2(n)`    |$\mathbf{a''}$ |$\mathbf{b''}$ |✅|
+|$T'$    |`T1(n)`    |$\mathbf{a}$, $\mathbf{b}$ |$\mathbf{a'}$, $\mathbf{b'}$ |❎|
+|$T'^{-1}$    |`iT1(n)`    |$\mathbf{a'}$, $\mathbf{b'}$ |$\mathbf{a}$, $\mathbf{b}$ |❎|
+|$T''$    |`T2(n)`    |$\mathbf{a}$, $\mathbf{b}$ |$\mathbf{a''}$, $\mathbf{b''}$ |❎|
+|$T''^{-1}$    |`iT2(n)`    |$\mathbf{a''}$, $\mathbf{b''}$ |$\mathbf{a}$, $\mathbf{b}$ |❎|
+|$T'''$    |`T3(n)`    |$\mathbf{a'}$, $\mathbf{b'}$ |$\mathbf{a''}$, $\mathbf{b''}$ |❎|
+|$T'''^{-1}$    |`iT3(n)`    |$\mathbf{a''}$, $\mathbf{b''}$ |$\mathbf{a'}$, $\mathbf{b'}$ |❎|
+
+
+
+<!-- ❌✔️ -->
 
 ## License
 
