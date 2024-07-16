@@ -21,8 +21,8 @@ _flip your bins_
 
 
 We provide both 
-- a python package (available on PyPi: https://pypi.org/project/qsalto,
-- a web viewer for visualizing the transformation matrices: https://mc-zen.github.io/qsalto
+- a python package, (soon) available on PyPi: https://pypi.org/project/qsalto,
+- a web viewer for visualizing the transformation matrices at https://mc-zen.github.io/qsalto.
 
 
 
