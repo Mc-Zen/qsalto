@@ -32,13 +32,13 @@ canvas {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-bottom: 2em;
 }
 
 .matrix-container {
     display: grid;
     grid-auto-columns: max-content;
     grid-column-gap: 15pt;
+    margin-bottom: 2em;
 }
 
 #c-M {
