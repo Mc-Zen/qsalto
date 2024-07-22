@@ -23,6 +23,7 @@ We provide both
 - a python package, (soon) available on PyPi: https://pypi.org/project/qsalto,
 - a web viewer for visualizing the transformation matrices at https://mc-zen.github.io/qsalto.
 
+![docs/media/transformation-diagram.svg](docs/media/transformation-diagram.svg)
 
 ## Python package
 
