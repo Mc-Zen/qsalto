@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from src.salto import *
+from src.qsalto import *
 from scipy.special import comb
 
 
