@@ -1,10 +1,5 @@
 
-import numpy as np
 from scipy.special import comb as scomb
-
-
-def comb(n, k):
-    return scomb(n, k, exact=True)
 
 
 def comb(n, k):
@@ -62,7 +57,7 @@ def T3(n: int, i: int, j: int) -> float:
 
 
 def iT3(n: int, i: int, j: int) -> float:
-    sum = 0
+    sum = 0.
     for l in range(n + 1):
         sum += comb(n - j, i - l) * comb(j, l) * (-1)**(i - l)
     return sum / comb(n, i)

@@ -15,7 +15,7 @@ def assert_valid_entry(entry, n):
         1] <= n, f"Matrix entry `{entry}` out of range ({n=})"
 
 
-def M(n: int, entry: tuple | None = None) -> np.ndarray:
+def M(n: int, entry: tuple | None = None) -> np.ndarray | float:
     """Self-inverse transformation matrix between Shor-Laflamme distributions $a$ and $b$.
 
     Parameters
@@ -46,7 +46,7 @@ def M(n: int, entry: tuple | None = None) -> np.ndarray:
     return K
 
 
-def M1(n: int, entry: tuple | None = None) -> np.ndarray:
+def M1(n: int, entry: tuple | None = None) -> np.ndarray | float:
     """Self-inverse transformation matrix between quantum weight enumerators $a'$ and $b'$.
 
     Parameters
@@ -66,7 +66,7 @@ def M1(n: int, entry: tuple | None = None) -> np.ndarray:
     return np.fliplr(np.eye(n+1))
 
 
-def M2(n: int, entry: tuple | None = None) -> np.ndarray:
+def M2(n: int, entry: tuple | None = None) -> np.ndarray | float:
     """Self-inverse transformation matrix between quantum weight enumerators $a''$ and $b''$.
 
     Parameters
@@ -86,7 +86,7 @@ def M2(n: int, entry: tuple | None = None) -> np.ndarray:
     return np.diag(np.resize([1, -1], n+1)[::-1])
 
 
-def T2(n: int, entry: tuple | None = None) -> np.ndarray:
+def T2(n: int, entry: tuple | None = None) -> np.ndarray | float:
     """Transformation matrix from Shor-Laflamme enumerators $a$ to Rains shadow enumerators $a''$. 
 
     Parameters
@@ -109,7 +109,7 @@ def T2(n: int, entry: tuple | None = None) -> np.ndarray:
     return K
 
 
-def iT2(n: int, entry: tuple | None = None) -> np.ndarray:
+def iT2(n: int, entry: tuple | None = None) -> np.ndarray | float:
     """Transformation matrix from Rains shadow enumerators $a''$ to Shor-Laflamme enumerators $a$. 
 
     Parameters
@@ -132,7 +132,7 @@ def iT2(n: int, entry: tuple | None = None) -> np.ndarray:
     return K
 
 
-def T1(n: int, entry: tuple | None = None) -> np.ndarray:
+def T1(n: int, entry: tuple | None = None) -> np.ndarray | float:
     """Transformation matrix from Shor-Laflamme enumerators $a$ to Rains unitary enumerators $a'$. 
 
     Parameters
@@ -163,7 +163,7 @@ def T1(n: int, entry: tuple | None = None) -> np.ndarray:
     return K
 
 
-def iT1(n: int, entry: tuple | None = None) -> np.ndarray:
+def iT1(n: int, entry: tuple | None = None) -> np.ndarray | float:
     """Transformation matrix from Rains unitary enumerators $a'$ to Shor-Laflamme enumerators $a$. 
 
     Parameters
@@ -197,7 +197,7 @@ def iT1(n: int, entry: tuple | None = None) -> np.ndarray:
     return K
 
 
-def T3(n: int, entry: tuple | None = None) -> np.ndarray:
+def T3(n: int, entry: tuple | None = None) -> np.ndarray | float:
     """Transformation matrix from Rains' unitary enumerators $a'$ to Rains' shadow enumerators $a''$. 
 
     Parameters
@@ -227,7 +227,7 @@ def T3(n: int, entry: tuple | None = None) -> np.ndarray:
     return K * 2**-n
 
 
-def iT3(n: int, entry: tuple | None = None) -> np.ndarray:
+def iT3(n: int, entry: tuple | None = None) -> np.ndarray | float:
     """Transformation matrix from Rains' shadow enumerators $a''$ to Rains' unitary enumerators $a'$. 
 
     Parameters

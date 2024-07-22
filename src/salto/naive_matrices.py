@@ -9,6 +9,7 @@ def comb(n, k):
 
 
 def M(n: int, entry=None) -> np.ndarray:
+    K = np.zeros([n + 1, n + 1])
     for i in range(n + 1):
         for j in range(n + 1):
             sum = 0
