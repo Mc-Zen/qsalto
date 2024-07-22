@@ -4,7 +4,9 @@ from . import matrices
 
 
 def single_shot_estimators(n: int) -> Tuple[np.ndarray]:
-    """Generate $n$-qubit single-shot estimators
+    """
+    Generate $n$-qubit single-shot estimators for the quantum weight 
+    distributions a, b, a', b', a'', and b''. 
 
     Parameters
     ----------
@@ -14,10 +16,9 @@ def single_shot_estimators(n: int) -> Tuple[np.ndarray]:
     Returns
     -------
     Tuple[np.ndarray]
-        Returns a tuple of 6 matrices containing single-shot estimators for
-        the quantum weight distributions a, b, a', b', a'', and b'', respectively. 
-        Each matrix consists of $n+1$ estimators as columns where the column index
-        corresponds to the number of measured singlets. 
+        A tuple of 6 matrices for a, b, a', b', a'', and b'', respectively. 
+        Each matrix consists of $n+1$ estimators as columns where the column 
+        index corresponds to the number of measured singlets. 
     """
     M2 = matrices.M2(n)
     iT2 = matrices.iT2(n)
