@@ -14,10 +14,9 @@ _transform your quantum weight enumerators_
 
 
 **qsalto** provides transformations between several quantum weight enumerators, including
-- Shor-Laflamme enumerators,
-- Rains shadow enumerators,
-- Rains unitary enumerators,
-- and averaged subsystem purities. 
+- Shor-Laflamme enumerators $a$, $b$,
+- Rains unitary enumerators $a'$,
+- and Rains shadow enumerators $a''$.
 
 
 We provide both 
@@ -42,6 +41,7 @@ The python package `qsalto` can be installed via `pip install qsalto` and featur
 |$T'''$    |`T3(n)`    |$\mathbf{a'}$, $\mathbf{b'}$ |$\mathbf{a''}$, $\mathbf{b''}$ |❎|
 |$T'''^{-1}$    |`iT3(n)`    |$\mathbf{a''}$, $\mathbf{b''}$ |$\mathbf{a'}$, $\mathbf{b'}$ |❎|
 
+To compute the full matrices, a special algorithm making use of recursive patterns is employed. Each matrix generator also features the computation of single elements through, e.g., `M(100, entry=[3,4])` where `entry` specifies the row and column of the entry (in that order). This is only faster than computing the entire matrix when merely very few entries are computed. 
 
 
 <!-- ❌✔️ -->
