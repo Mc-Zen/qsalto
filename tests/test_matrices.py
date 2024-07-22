@@ -63,4 +63,4 @@ class TestData(unittest.TestCase):
                 for i in range(n + 1):
                     for j in range(n + 1):
                         val = t(n, entry=[i, j])
-                        assert matrix[i, j] == val, f"{matrix[i, j]} != {val}"
+                        np.testing.assert_allclose(matrix[i, j], val)
