@@ -46,42 +46,42 @@ canvas {
     grid-column: 3;
 }
 
-#c-T_1 {
+#c-iT1 {
     grid-row: 2;
     grid-column: 2;
     align-items: start;
 }
 
-#c-T_ {
+#c-T1 {
     grid-row: 2;
     grid-column: 4;
     align-items: end;
 }
 
 
-#c-T__1 {
+#c-iT2 {
     grid-row: 3;
     grid-column: 1;
 }
 
-#c-T__ {
+#c-T2 {
     grid-row: 3;
     grid-column: 5;
 }
 
-#c-M_ {
+#c-M1 {
     grid-row: 3;
     grid-column: 3;
 }
 
 
-#c-T___1 {
+#c-iT3 {
     grid-row: 4;
     grid-column: 2;
     align-items: start;
 }
 
-#c-T___ {
+#c-T3 {
     grid-row: 4;
     grid-column: 4;
     align-items: end;
@@ -89,7 +89,7 @@ canvas {
 
 
 
-#c-M__ {
+#c-M2 {
     grid-row: 5;
     grid-column: 3;
 }

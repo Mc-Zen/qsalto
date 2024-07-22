@@ -1,5 +1,5 @@
 function fact(num) {
-    var rval=1;
+    var rval = 1;
     for (var i = 2; i <= num; i++)
         rval = rval * i;
     return rval;
@@ -10,15 +10,15 @@ function comb(n, k) {
     return fact(n) / (fact(k) * fact(n - k))
 }
 
-function matrixM(n) {
+function matrix_M(n) {
     let K = []
-    const N = 2**-n
+    const N = 2 ** -n
     for (let k = 0; k < n + 1; k++) {
         let row = []
         for (let l = 0; l < n + 1; l++) {
             let sum = 0
             for (let j = 0; j < n + 1; j++) {
-                sum += comb(l, j) * comb(n - l, k - j) * 3**(k-j) * (-1)**j * N
+                sum += comb(l, j) * comb(n - l, k - j) * 3 ** (k - j) * (-1) ** j * N
             }
             row.push(sum)
         }
@@ -27,7 +27,7 @@ function matrixM(n) {
     return K
 }
 
-function matrixM_(n) {
+function matrix_M1(n) {
     let K = []
     for (let k = 0; k < n + 1; k++) {
         let row = []
@@ -40,7 +40,7 @@ function matrixM_(n) {
     return K
 }
 
-function matrixM__(n) {
+function matrix_M2(n) {
     let K = [];
     for (let k = 0; k < n + 1; k++) {
         let row = [];
@@ -54,8 +54,8 @@ function matrixM__(n) {
     return K;
 }
 
-function matrixT__1(n) {
-    let K = matrixM(n)
+function matrix_iT2(n) {
+    let K = matrix_M(n)
     for (let k = 0; k < n + 1; k++) {
         if (k % 2 == 0) { continue; }
         for (let l = 0; l < n + 1; l++) {
@@ -65,8 +65,8 @@ function matrixT__1(n) {
     return K;
 }
 
-function matrixT__(n) {
-    let K = matrixM(n)
+function matrix_T2(n) {
+    let K = matrix_M(n)
     for (let k = 0; k < n + 1; k++) {
         if (k % 2 == 0) { continue; }
         for (let l = 0; l < n + 1; l++) {
@@ -76,40 +76,40 @@ function matrixT__(n) {
     return K;
 }
 
-function matrixT_(n) {
+function matrix_T1(n) {
     let K = []
     for (let k = 0; k < n + 1; k++) {
         let row = []
         for (let l = 0; l < n + 1; l++) {
-            row.push(comb(n - l, n - k) / comb(n, k) * 2**(n - k)) 
+            row.push(comb(n - l, n - k) / comb(n, k) * 2 ** (n - k))
         }
         K.push(row)
     }
     return K
 }
 
-function matrixT_1(n) {
+function matrix_iT1(n) {
     let K = []
     for (let k = 0; k < n + 1; k++) {
         let row = []
         for (let l = 0; l < n + 1; l++) {
-            row.push(comb(n - l, k - l) * comb(n, l) / 2**(n - l) * (-1)**(k + l))
+            row.push(comb(n - l, k - l) * comb(n, l) / 2 ** (n - l) * (-1) ** (k + l))
         }
         K.push(row)
     }
     return K
 }
 
-function matrixT___(n) {
+function matrix_T3(n) {
     let K = []
-    const N = 2**-n
+    const N = 2 ** -n
     for (let k = 0; k < n + 1; k++) {
         let row = []
         for (let l = 0; l < n + 1; l++) {
             let sum = 0
             let k_ = n - k
             for (let j = 0; j < n + 1; j++) {
-                sum += comb(l, j) * comb(n - l, k_ - j) * (-1)**j * comb(n, l) * N
+                sum += comb(l, j) * comb(n - l, k_ - j) * (-1) ** j * comb(n, l) * N
             }
             row.push(sum)
         }
@@ -118,7 +118,7 @@ function matrixT___(n) {
     return K
 }
 
-function matrixT___1(n) {
+function matrix_iT3(n) {
     let K = []
     for (let k = 0; k < n + 1; k++) {
         let row = []
@@ -126,7 +126,7 @@ function matrixT___1(n) {
             let sum = 0
             let l_ = n - l
             for (let j = 0; j < n + 1; j++) {
-                sum += comb(l_, j) * comb(n - l_, k - j) * (-1)**j / comb(n, k)
+                sum += comb(l_, j) * comb(n - l_, k - j) * (-1) ** j / comb(n, k)
             }
             row.push(sum)
         }
@@ -136,7 +136,7 @@ function matrixT___1(n) {
 }
 function linearNorm(x) { return x; }
 function logNorm(x) { return Math.log(x); }
-function symlogNorm(x, base=10, threshold=1, linscale=1) { 
+function symlogNorm(x, base = 10, threshold = 1, linscale = 1) {
     const c = linscale / (1 - 1 / base);
     let log_base = Math.log(base);
     if (x == 0) { return 0.; }
@@ -147,17 +147,17 @@ function symlogNorm(x, base=10, threshold=1, linscale=1) {
 
 
 const cool_white_warm_map = [
-    [0.23046875, 0.296875  , 0.75      ],
-    [0.265625  , 0.3515625 , 0.796875  ],
-    [0.30078125, 0.40625   , 0.83984375],
+    [0.23046875, 0.296875, 0.75],
+    [0.265625, 0.3515625, 0.796875],
+    [0.30078125, 0.40625, 0.83984375],
     [0.33984375, 0.45703125, 0.87890625],
-    [0.3828125 , 0.5078125 , 0.9140625 ],
-    [0.421875  , 0.5546875 , 0.94140625],
-    [0.46484375, 0.6015625 , 0.96484375],
-    [0.5078125 , 0.64453125, 0.98046875],
-    [0.55078125, 0.6875    , 0.9921875 ],
-    [0.59375   , 0.72265625, 0.99609375],
-    [0.63671875, 0.7578125 , 0.99609375],
+    [0.3828125, 0.5078125, 0.9140625],
+    [0.421875, 0.5546875, 0.94140625],
+    [0.46484375, 0.6015625, 0.96484375],
+    [0.5078125, 0.64453125, 0.98046875],
+    [0.55078125, 0.6875, 0.9921875],
+    [0.59375, 0.72265625, 0.99609375],
+    [0.63671875, 0.7578125, 0.99609375],
     [0.68506052, 0.79136302, 0.99609375],
     [0.73606928, 0.83207831, 0.99609375],
     [0.79197618, 0.86954086, 0.99609375],
@@ -167,27 +167,27 @@ const cool_white_warm_map = [
     [0.99609375, 0.93954694, 0.90909866],
     [0.99335938, 0.88813063, 0.82920253],
     [0.98945313, 0.83754538, 0.75953871],
-    [0.984375  , 0.7875    , 0.69508929],
-    [0.98046875, 0.7422982 , 0.63512146],
+    [0.984375, 0.7875, 0.69508929],
+    [0.98046875, 0.7422982, 0.63512146],
     [0.97460938, 0.69840429, 0.58397647],
     [0.96757812, 0.65027518, 0.52883825],
     [0.95859375, 0.60501409, 0.48322554],
     [0.94140625, 0.55078125, 0.43359375],
-    [0.921875  , 0.49609375, 0.38671875],
-    [0.89453125, 0.4375    , 0.34375   ],
-    [0.8671875 , 0.375     , 0.30078125],
-    [0.83203125, 0.3125    , 0.2578125 ],
-    [0.79296875, 0.2421875 , 0.21875   ],
-    [0.75      , 0.15625   , 0.18359375],
-    [0.703125  , 0.015625  , 0.1484375 ]
+    [0.921875, 0.49609375, 0.38671875],
+    [0.89453125, 0.4375, 0.34375],
+    [0.8671875, 0.375, 0.30078125],
+    [0.83203125, 0.3125, 0.2578125],
+    [0.79296875, 0.2421875, 0.21875],
+    [0.75, 0.15625, 0.18359375],
+    [0.703125, 0.015625, 0.1484375]
 ]
 
 let green_white_yellow_map = [
-    [0.91 , 0.729, 0.282],
-    [1.0  , 1.0  , 1.0  ],
+    [0.91, 0.729, 0.282],
+    [1.0, 1.0, 1.0],
     [0.321, 0.729, 0.431]
 ]
-    
+
 function writeMatrixToCanvas(ctx, matrix, map, norm) {
     const n = matrix.length - 1
     const imageData = ctx.createImageData(n + 1, n + 1);
@@ -198,7 +198,7 @@ function writeMatrixToCanvas(ctx, matrix, map, norm) {
     if (norm == "linear") { normFunction = linearNorm }
     else if (norm == "symlog") { normFunction = symlogNorm }
 
-    let normalizedArr = normalize(matrix.flat(), normFunction, x0=-absmax, x1=absmax)
+    let normalizedArr = normalize(matrix.flat(), normFunction, x0 = -absmax, x1 = absmax)
     let coloredArr = normalizedArr.map((x) => colorize(x, map))
     for (let i = 0; i < coloredArr.length; i++) {
         data[4 * i] = coloredArr[i][0] * 255;
@@ -209,9 +209,9 @@ function writeMatrixToCanvas(ctx, matrix, map, norm) {
     ctx.putImageData(imageData, 0, 0);
 }
 
-function normalize(arr, norm, x0=null, x1=null) {
-    if (x0 == null){ x0 = Math.min(...arr); }
-    if (x1 == null){ x1 = Math.max(...arr); }
+function normalize(arr, norm, x0 = null, x1 = null) {
+    if (x0 == null) { x0 = Math.min(...arr); }
+    if (x1 == null) { x1 = Math.max(...arr); }
     const y0 = 0;
     const y1 = 1;
     const a = (y1 - y0) / (norm(x1) - norm(x0));
@@ -232,10 +232,10 @@ function colorize(x, map) {
     const t = (i - i1);
     const clr1 = map[i1];
     const clr2 = map[i2];
-    function add_vector(a,b){
+    function add_vector(a, b) {
         return a.map((e, i) => e + b[i]);
     }
-    return add_vector(clr1.map((v) => v * (1 - t)) , clr2.map((v) => v * t));
+    return add_vector(clr1.map((v) => v * (1 - t)), clr2.map((v) => v * t));
 }
 
 
@@ -248,15 +248,15 @@ function MatrixSpec(name, generator, map) {
 }
 
 let matrices = [
-    new MatrixSpec("M", matrixM, cool_white_warm_map),
-    new MatrixSpec("M_", matrixM_, green_white_yellow_map),
-    new MatrixSpec("M__", matrixM__, green_white_yellow_map),
-    new MatrixSpec("T_", matrixT_, cool_white_warm_map),
-    new MatrixSpec("T_1", matrixT_1, cool_white_warm_map),
-    new MatrixSpec("T__", matrixT__, cool_white_warm_map),
-    new MatrixSpec("T__1", matrixT__1, cool_white_warm_map),
-    new MatrixSpec("T___", matrixT___, cool_white_warm_map),
-    new MatrixSpec("T___1", matrixT___1, green_white_yellow_map),
+    new MatrixSpec("M", matrix_M, cool_white_warm_map),
+    new MatrixSpec("M1", matrix_M1, green_white_yellow_map),
+    new MatrixSpec("M2", matrix_M2, green_white_yellow_map),
+    new MatrixSpec("T1", matrix_T1, cool_white_warm_map),
+    new MatrixSpec("iT1", matrix_iT1, cool_white_warm_map),
+    new MatrixSpec("T2", matrix_T2, cool_white_warm_map),
+    new MatrixSpec("iT2", matrix_iT2, cool_white_warm_map),
+    new MatrixSpec("T3", matrix_T3, cool_white_warm_map),
+    new MatrixSpec("iT3", matrix_iT3, green_white_yellow_map),
 ]
 
 function drawMatrix(n, name, matrix, map, norm) {
@@ -291,17 +291,21 @@ function matrix_name_to_math(name) {
     let root = document.createElementNS(MML, "msup");
 
     let symb = document.createElementNS(MML, "mi");
-    symb.appendChild(document.createTextNode(name[0]));
-    
+    symb.appendChild(document.createTextNode(name.replace("i", "")[0]));
+
     let exponent = document.createElementNS(MML, "mrow");
 
-    for (let i = 0; i < name.split("_").length - 1; i++) {
+    let num_primes = 0;
+    if (name.includes("1")) { num_primes = 1; }
+    if (name.includes("2")) { num_primes = 2; }
+    if (name.includes("3")) { num_primes = 3; }
+    for (let i = 0; i < num_primes; i++) {
         let prime = document.createElementNS(MML, "mi");
         prime.appendChild(document.createTextNode("&#x2032;"))
         exponent.appendChild(prime)
     }
 
-    if (name.includes("1")) {
+    if (name.includes("i")) {
         let one = document.createElementNS(MML, "mn");
         one.appendChild(document.createTextNode("1"));
 
@@ -311,7 +315,7 @@ function matrix_name_to_math(name) {
         exponent.appendChild(minus)
         exponent.appendChild(one)
     }
-    
+
     root.appendChild(symb);
     root.appendChild(exponent);
 
@@ -321,17 +325,17 @@ function matrix_name_to_math(name) {
 let hovered_canvas = null
 
 
-window.addEventListener("load", function() { 
+window.addEventListener("load", function () {
     const input_n = document.getElementById("input_n")
     const output_matrix_value = document.getElementById("matrix_value")
     const output_matrix_name = document.getElementById("matrix_name")
-    
+
     if ("URLSearchParams" in window) {
         const url = new URL(window.location)
         let a = url.searchParams.get("n")
         if (a != null) { input_n.value = a }
     }
-    
+
     updateMatrices(parseInt(input_n.value), getSelectedNorm())
 
     const inputs = [input_n].concat(Array.from(document.querySelectorAll("[name=norm]")));
@@ -353,9 +357,9 @@ window.addEventListener("load", function() {
             const x = clamp(Math.floor((evt.clientX - bounds.left) / bounds.width * canvas.width), 0, n + 1);
             const y = clamp(Math.floor((evt.clientY - bounds.top) / bounds.height * canvas.height), 0, n + 1);
 
-            
+
             output_matrix_value.innerHTML = "[" + y + "," + x + "] = " + matrix.matrix[y][x].toString().replace("-", "−")
-            
+
             if (hovered_canvas != canvas) {
                 var MML = "http://www.w3.org/1998/Math/MathML";
                 var math = document.createElementNS(MML, "math");
@@ -372,7 +376,7 @@ window.addEventListener("load", function() {
     });
     // output_matrix_value.innerHTML = ""
 
-    
+
     input_n.addEventListener("input", (evt) => {
 
         let n = parseInt(input_n.value)
