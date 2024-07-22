@@ -10,6 +10,15 @@ function comb(n, k) {
     return fact(n) / (fact(k) * fact(n - k))
 }
 
+function comb(n, k) {
+    let val = 1n
+    for (let j = 1; j <= k; j++) {
+        val *= BigInt(n + 1 - j)
+        val /= BigInt(j)
+    }
+    return val
+}
+
 function matrix_M(n) {
     let K = []
     const N = 2 ** -n
@@ -23,6 +32,36 @@ function matrix_M(n) {
             row.push(sum)
         }
         K.push(row)
+    }
+    return K
+}
+
+function makeEmptyMatrix(n) {
+    let K = []
+    for (let i = 0; i < n; i++) {
+        let row = Array(n)
+        row.fill(0n)
+        K.push(row)
+    }
+    return K
+}
+
+function matrix_M(n) {
+    let K = makeEmptyMatrix(n + 1)
+    for (let i = 0; i < n + 1; i++) {
+        K[0][i] = 1n
+        K[i][n] += comb(n, i) * BigInt((-1) ** i)
+    }
+    for (let i = 1; i < n + 1; i++) {
+        for (let j = n - 1; j >= 0; j--) {
+            K[i][j] = 3n * K[i - 1][j + 1] + K[i - 1][j] + K[i][j + 1]
+        }
+    }
+    const N = 2 ** n
+    for (let i = 0; i < n + 1; i++) {
+        for (let j = 0; j < n + 1; j++) {
+            K[i][j] = Number(K[i][j]) / N
+        }
     }
     return K
 }
@@ -77,58 +116,91 @@ function matrix_T2(n) {
 }
 
 function matrix_T1(n) {
-    let K = []
+    let K = makeEmptyMatrix(n + 1)
     for (let i = 0; i < n + 1; i++) {
-        let row = []
-        for (let j = 0; j < n + 1; j++) {
-            row.push(comb(n - j, n - i) / comb(n, i) * 2 ** (n - i))
+        K[i][i] = 1n
+        K[n][i] = 1n
+    }
+    for (let j = n - 1; j >= 0; j--) {
+        for (let i = j - 1; i < n; i++) {
+            if (i == -1) { continue }
+            K[i][j] = K[i][j + 1] + K[i + 1][j + 1]
         }
-        K.push(row)
+    }
+    for (let i = 0; i < n + 1; i++) {
+        let N = 2 ** (n - i)
+        let W = Number(K[i][0])
+        for (let j = 0; j < n + 1; j++) {
+            K[i][j] = Number(K[i][j]) * N / W
+        }
     }
     return K
 }
 
 function matrix_iT1(n) {
-    let K = []
+    let K = makeEmptyMatrix(n + 1)
     for (let i = 0; i < n + 1; i++) {
-        let row = []
-        for (let j = 0; j < n + 1; j++) {
-            row.push(comb(n - j, i - j) * comb(n, j) / 2 ** (n - j) * (-1) ** (i + j))
+        K[i][i] = 1n
+        K[n][i] = 1n
+    }
+    for (let j = n - 1; j >= 0; j--) {
+        for (let i = j - 1; i < n; i++) {
+            if (i == -1) { continue }
+            K[i][j] = K[i][j + 1] + K[i + 1][j + 1]
         }
-        K.push(row)
+    }
+    for (let j = n; j >= 0; j--) {
+        let N = 2 ** (j - n)
+        let W = K[j][0]
+        for (let i = 0; i < n + 1; i++) {
+            K[i][j] = Number(K[i][j] * W) * N
+        }
+    }
+    for (let j = 0; j < n + 1; j++) {
+        for (let i = j + 1; i < n + 1; i += 2) {
+            K[i][j] *= -1
+        }
     }
     return K
 }
 
 function matrix_T3(n) {
-    let K = []
-    const N = 2 ** -n
+    let K = makeEmptyMatrix(n + 1)
     for (let i = 0; i < n + 1; i++) {
-        let row = []
-        for (let j = 0; j < n + 1; j++) {
-            let sum = 0
-            for (let l = 0; l < n + 1; l++) {
-                sum += comb(n - j, i - l) * comb(j, l) * (-1) ** (j - l) * comb(n, j) * N
-            }
-            row.push(sum)
+        K[0][i] = BigInt((-1) ** i)
+        K[i][0] = comb(n, i)
+    }
+    for (let i = 1; i < n + 1; i++) {
+        for (let j = 1; j < n + 1; j++) {
+            K[i][j] = K[i - 1][j - 1] - K[i - 1][j] - K[i][j - 1]
         }
-        K.push(row)
+    }
+    const N = 2 ** n
+    for (let j = 0; j < n + 1; j++) {
+        let W = comb(n, j)
+        for (let i = 0; i < n + 1; i++) {
+            K[i][j] = Number(K[i][j] * W) / Number(N)
+        }
     }
     return K
 }
 
 function matrix_iT3(n) {
-    let K = []
+    let K = makeEmptyMatrix(n + 1)
     for (let i = 0; i < n + 1; i++) {
-        let row = []
-        for (let j = 0; j < n + 1; j++) {
-            let sum = 0
-            for (let l = 0; l < n + 1; l++) {
-                sum += comb(n - j, i - l) * comb(j, l) * (-1) ** (i - l) / comb(n, i)
-            }
-            row.push(sum)
+        K[0][i] = 1n
+        K[i][0] = comb(n, i) * BigInt((-1) ** i)
+    }
+    for (let i = 1; i < n + 1; i++) {
+        for (let j = 1; j < n + 1; j++) {
+            K[i][j] = K[i - 1][j - 1] + K[i - 1][j] + K[i][j - 1]
         }
-        K.push(row)
+    }
+    for (let i = 0; i < n + 1; i++) {
+        let W = comb(n, i)
+        for (let j = 0; j < n + 1; j++) {
+            K[i][j] = Number(K[i][j]) / Number(W)
+        }
     }
     return K
 }
@@ -187,11 +259,20 @@ let green_white_yellow_map = [
     [0.321, 0.729, 0.431]
 ]
 
+function maxAbsElement(matrix) {
+    let max = 0;
+    for (let row of matrix) {
+        max = Math.max(max, ...row.map(Math.abs))
+    }
+    return max
+}
+
 function writeMatrixToCanvas(ctx, matrix, map, norm) {
     const n = matrix.length - 1
     const imageData = ctx.createImageData(n + 1, n + 1);
     const data = imageData.data;
-    let absmax = Math.max(...matrix.flat().map(Math.abs))
+    let absmax = maxAbsElement(matrix)
+    // let absmax = Math.max(...matrix.flat().map(Math.abs))
 
     let normFunction = symlogNorm
     if (norm == "linear") { normFunction = linearNorm }
@@ -379,11 +460,15 @@ window.addEventListener("load", function () {
     input_n.addEventListener("input", (evt) => {
 
         let n = parseInt(input_n.value)
-        console.log(n)
-        if (!isNaN(n) && n > 150) {
+
+        if (!isNaN(n) && n > 350) {
             document.getElementById("input-warning").style.display = "block";
         } else {
             document.getElementById("input-warning").style.display = "none";
+        }
+
+        if (!isNaN(n) && n > 500) {
+            input_n.value = 500
         }
     });
 })
