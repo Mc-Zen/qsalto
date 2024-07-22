@@ -13,12 +13,12 @@ function comb(n, k) {
 function matrix_M(n) {
     let K = []
     const N = 2 ** -n
-    for (let k = 0; k < n + 1; k++) {
+    for (let i = 0; i < n + 1; i++) {
         let row = []
-        for (let l = 0; l < n + 1; l++) {
+        for (let j = 0; j < n + 1; j++) {
             let sum = 0
-            for (let j = 0; j < n + 1; j++) {
-                sum += comb(l, j) * comb(n - l, k - j) * 3 ** (k - j) * (-1) ** j * N
+            for (let l = 0; l < n + 1; l++) {
+                sum += comb(n - j, i - l) * comb(j, l) * (-1) ** l * 3 ** (i - l) * N
             }
             row.push(sum)
         }
@@ -29,10 +29,10 @@ function matrix_M(n) {
 
 function matrix_M1(n) {
     let K = []
-    for (let k = 0; k < n + 1; k++) {
+    for (let i = 0; i < n + 1; i++) {
         let row = []
-        for (let l = 0; l < n + 1; l++) {
-            if (l == n - k) { row.push(1) }
+        for (let j = 0; j < n + 1; j++) {
+            if (j == n - i) { row.push(1) }
             else { row.push(0) }
         }
         K.push(row)
@@ -42,11 +42,11 @@ function matrix_M1(n) {
 
 function matrix_M2(n) {
     let K = [];
-    for (let k = 0; k < n + 1; k++) {
+    for (let i = 0; i < n + 1; i++) {
         let row = [];
-        for (let l = 0; l < n + 1; l++) {
-            if (l != k) { row.push(0); }
-            else if ((n - l + 1) % 2) { row.push(1); }
+        for (let j = 0; j < n + 1; j++) {
+            if (j != i) { row.push(0); }
+            else if ((n - j + 1) % 2) { row.push(1); }
             else { row.push(-1); }
         }
         K.push(row);
@@ -56,10 +56,10 @@ function matrix_M2(n) {
 
 function matrix_iT2(n) {
     let K = matrix_M(n)
-    for (let k = 0; k < n + 1; k++) {
-        if (k % 2 == 0) { continue; }
-        for (let l = 0; l < n + 1; l++) {
-            K[k][l] *= -1
+    for (let i = 0; i < n + 1; i++) {
+        if (i % 2 == 0) { continue; }
+        for (let j = 0; j < n + 1; j++) {
+            K[i][j] *= -1
         }
     }
     return K;
@@ -67,10 +67,10 @@ function matrix_iT2(n) {
 
 function matrix_T2(n) {
     let K = matrix_M(n)
-    for (let k = 0; k < n + 1; k++) {
-        if (k % 2 == 0) { continue; }
-        for (let l = 0; l < n + 1; l++) {
-            K[l][k] *= -1
+    for (let i = 0; i < n + 1; i++) {
+        if (i % 2 == 0) { continue; }
+        for (let j = 0; j < n + 1; j++) {
+            K[j][i] *= -1
         }
     }
     return K;
@@ -78,10 +78,10 @@ function matrix_T2(n) {
 
 function matrix_T1(n) {
     let K = []
-    for (let k = 0; k < n + 1; k++) {
+    for (let i = 0; i < n + 1; i++) {
         let row = []
-        for (let l = 0; l < n + 1; l++) {
-            row.push(comb(n - l, n - k) / comb(n, k) * 2 ** (n - k))
+        for (let j = 0; j < n + 1; j++) {
+            row.push(comb(n - j, n - i) / comb(n, i) * 2 ** (n - i))
         }
         K.push(row)
     }
@@ -90,10 +90,10 @@ function matrix_T1(n) {
 
 function matrix_iT1(n) {
     let K = []
-    for (let k = 0; k < n + 1; k++) {
+    for (let i = 0; i < n + 1; i++) {
         let row = []
-        for (let l = 0; l < n + 1; l++) {
-            row.push(comb(n - l, k - l) * comb(n, l) / 2 ** (n - l) * (-1) ** (k + l))
+        for (let j = 0; j < n + 1; j++) {
+            row.push(comb(n - j, i - j) * comb(n, j) / 2 ** (n - j) * (-1) ** (i + j))
         }
         K.push(row)
     }
@@ -103,13 +103,12 @@ function matrix_iT1(n) {
 function matrix_T3(n) {
     let K = []
     const N = 2 ** -n
-    for (let k = 0; k < n + 1; k++) {
+    for (let i = 0; i < n + 1; i++) {
         let row = []
-        for (let l = 0; l < n + 1; l++) {
+        for (let j = 0; j < n + 1; j++) {
             let sum = 0
-            let k_ = n - k
-            for (let j = 0; j < n + 1; j++) {
-                sum += comb(l, j) * comb(n - l, k_ - j) * (-1) ** j * comb(n, l) * N
+            for (let l = 0; l < n + 1; l++) {
+                sum += comb(n - j, i - l) * comb(j, l) * (-1) ** (j - l) * comb(n, j) * N
             }
             row.push(sum)
         }
@@ -120,13 +119,12 @@ function matrix_T3(n) {
 
 function matrix_iT3(n) {
     let K = []
-    for (let k = 0; k < n + 1; k++) {
+    for (let i = 0; i < n + 1; i++) {
         let row = []
-        for (let l = 0; l < n + 1; l++) {
+        for (let j = 0; j < n + 1; j++) {
             let sum = 0
-            let l_ = n - l
-            for (let j = 0; j < n + 1; j++) {
-                sum += comb(l_, j) * comb(n - l_, k - j) * (-1) ** j / comb(n, k)
+            for (let l = 0; l < n + 1; l++) {
+                sum += comb(n - j, i - l) * comb(j, l) * (-1) ** (i - l) / comb(n, i)
             }
             row.push(sum)
         }
@@ -134,6 +132,7 @@ function matrix_iT3(n) {
     }
     return K
 }
+
 function linearNorm(x) { return x; }
 function logNorm(x) { return Math.log(x); }
 function symlogNorm(x, base = 10, threshold = 1, linscale = 1) {
