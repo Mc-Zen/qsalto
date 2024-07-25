@@ -1,7 +1,7 @@
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/media/logo.svg">
-  <source media="(prefers-color-scheme: light)" srcset="docs/media/logo-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/media/logo.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/media/logo-dark.svg">
   <img alt="qsalto logo" src="docs/media/logo.svg">
 </picture>
 
