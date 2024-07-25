@@ -1,6 +1,10 @@
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/media/logo.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/media/logo-dark.svg">
+  <img alt="qsalto logo" src="docs/media/logo.svg">
+</picture>
 
-![](docs/media/logo.svg)
 
 _transform your quantum weight enumerators_
 
@@ -23,7 +27,8 @@ We provide both
 - a python package, (soon) available on PyPi: https://pypi.org/project/qsalto,
 - a web viewer for visualizing the transformation matrices at https://mc-zen.github.io/qsalto.
 
-![docs/media/transformation-diagram.svg](docs/media/transformation-diagram.svg)
+
+<img src="docs/media/transformation-diagram.svg" width="420">
 
 ## Python package
 
@@ -35,12 +40,12 @@ The python package `qsalto` can be installed via `pip install qsalto` and featur
 |$M$    |`M(n)`    |$\mathbf{a}$ |$\mathbf{b}$ |✅|
 |$M'$    |`M1(n)`    |$\mathbf{a'}$ |$\mathbf{b'}$ |✅|
 |$M''$    |`M2(n)`    |$\mathbf{a''}$ |$\mathbf{b''}$ |✅|
-|$T'$    |`T1(n)`    |$\mathbf{a}$, $\mathbf{b}$ |$\mathbf{a'}$, $\mathbf{b'}$ |❎|
-|$T'^{-1}$    |`iT1(n)`    |$\mathbf{a'}$, $\mathbf{b'}$ |$\mathbf{a}$, $\mathbf{b}$ |❎|
-|$T''$    |`T2(n)`    |$\mathbf{a}$, $\mathbf{b}$ |$\mathbf{a''}$, $\mathbf{b''}$ |❎|
-|$T''^{-1}$    |`iT2(n)`    |$\mathbf{a''}$, $\mathbf{b''}$ |$\mathbf{a}$, $\mathbf{b}$ |❎|
-|$T'''$    |`T3(n)`    |$\mathbf{a'}$, $\mathbf{b'}$ |$\mathbf{a''}$, $\mathbf{b''}$ |❎|
-|$T'''^{-1}$    |`iT3(n)`    |$\mathbf{a''}$, $\mathbf{b''}$ |$\mathbf{a'}$, $\mathbf{b'}$ |❎|
+|$T'$    |`T1(n)`    |$\mathbf{a}$, $\mathbf{b}$ |$\mathbf{a'}$, $\mathbf{b'}$ |❌|
+|$T'^{-1}$    |`iT1(n)`    |$\mathbf{a'}$, $\mathbf{b'}$ |$\mathbf{a}$, $\mathbf{b}$ |❌|
+|$T''$    |`T2(n)`    |$\mathbf{a}$, $\mathbf{b}$ |$\mathbf{a''}$, $\mathbf{b''}$ |❌|
+|$T''^{-1}$    |`iT2(n)`    |$\mathbf{a''}$, $\mathbf{b''}$ |$\mathbf{a}$, $\mathbf{b}$ |❌|
+|$T'''$    |`T3(n)`    |$\mathbf{a'}$, $\mathbf{b'}$ |$\mathbf{a''}$, $\mathbf{b''}$ |❌|
+|$T'''^{-1}$    |`iT3(n)`    |$\mathbf{a''}$, $\mathbf{b''}$ |$\mathbf{a'}$, $\mathbf{b'}$ |❌|
 
 To compute the full matrices, a special algorithm making use of recursive patterns is employed. Each matrix generator also features the computation of single elements through, e.g., `M(100, entry=[3,4])` where `entry` specifies the row and column of the entry (in that order). This is only faster than computing the entire matrix when merely very few entries are computed. 
 
