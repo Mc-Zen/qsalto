@@ -17,10 +17,10 @@ _transform your quantum weight enumerators_
 
 
 
-**qsalto** provides transformations between several quantum weight enumerators, including
-- Shor-Laflamme enumerators $a$, $b$,
-- Rains unitary enumerators $a'$,
-- and Rains shadow enumerators $a''$.
+**qsalto** provides transformations between several (normalized) quantum weight enumerators, including
+- Shor-Laflamme enumerators[^1] $a$, $b$,
+- Rains unitary enumerators[^2] $a'$, $b'$,
+- and Rains shadow enumerators[^3] $a''$.
 
 
 We provide both 
@@ -60,3 +60,13 @@ Furthermore, the function `single_shot_estimators(n)` generates single-shot esti
 This library is distributed under the MIT License.
 
 If you want to support work like this, please cite our paper: tba
+
+
+
+[^1]: [P. Shor and R. Laflamme, Phys. Rev. Lett. **78**, 1600 (1997)](http://dx.doi.org/10.1103/PhysRevLett.78.1600)
+
+[^2]: [E. M. Rains, IEEE Trans. Inf. Th., **44**, 1388 (1998)](http://dx.doi.org/10.1109/18.681316)
+
+[^3]: [E. M. Rains, IEEE Trans Inf. Th. **45**, 2361 (1999)](http://dx.doi.org/10.1109/18.796376)
+
+
