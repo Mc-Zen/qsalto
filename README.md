@@ -24,7 +24,7 @@ _transform your quantum weight enumerators_
 
 
 We provide both 
-- a python package, available on PyPi: https://pypi.org/project/qsalto,
+- a python package, available on PyPI: https://pypi.org/project/qsalto,
 - a web viewer for visualizing the transformation matrices at https://mc-zen.github.io/qsalto.
 
 
@@ -47,11 +47,11 @@ The python package `qsalto` can be installed via `pip install qsalto` and featur
 |$T'''$     |`T3(n)`   |$\mathbf{a'}$, $\mathbf{b'}$   |$\mathbf{a''}$, $\mathbf{b''}$ |❌            |
 |$T'''^{-1}$|`iT3(n)`  |$\mathbf{a''}$, $\mathbf{b''}$ |$\mathbf{a'}$, $\mathbf{b'}$   |❌            |
 
-To compute the full matrices, a special algorithm making use of recursive patterns is employed. Each matrix generator also features the computation of single elements through, e.g., `M(100, entry=[3,4])` where `entry` specifies the row and column of the entry (in that order). This is only faster than computing the entire matrix when merely very few entries are computed. 
+To compute the full matrices, an optimized algorithm making use of recursive patterns is employed. Each matrix generator also features the computation of single elements through, e.g., `M(100, entry=[3,4])` where `entry` specifies the row and column of the entry (in that order). 
 
 ### Single-shot estimators
 
-Furthermore, the function `single_shot_estimators(n)` generates single-shot estimators for $a$, $b$, $a'$, $b'$, $a''$, and $b''$ for all possible numbers $m=0,...,n$ of singlets as an outcome of a two-copy bell measurement. This function returns six 2D-arrays (one for each quantum weight enumerator in the order as given above) with the estimator for $m$ singlets in the $m$-th column. 
+Furthermore, the function `single_shot_estimators(n)` generates single-shot estimators for $a$, $b$, $a'$, $b'$, $a''$, and $b''$ for all possible numbers $m=0,...,n$ of singlets as an outcome of a two-copy Bell measurement. This function returns six 2D-arrays (one for each quantum weight enumerator in the order as given above) with the estimator for $m$ singlets in the $m$-th column. 
 
 
 
