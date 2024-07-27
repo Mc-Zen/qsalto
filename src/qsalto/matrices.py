@@ -13,7 +13,7 @@ def assert_valid_entry(entry, n):
     assert hasattr(entry, '__getitem__') and len(
         entry) == 2, f"Invalid entry `{entry}`. Entry should be a pair of integers"
     assert 0 <= entry[0] <= n and 0 <= entry[
-        1] <= n, f"Matrix entry `{entry}` out of range ({n=})"
+        1] <= n, f"Matrix entry `{entry}` out of range (n={n})"
 
 
 def M(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
