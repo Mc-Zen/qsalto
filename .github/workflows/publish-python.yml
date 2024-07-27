@@ -34,9 +34,7 @@ jobs:
     needs:
     - build
     runs-on: ubuntu-latest
-    environment:
-      name: pypi
-      url: https://pypi.org/p/qsalto 
+    environment: pypi
     permissions:
       id-token: write  # IMPORTANT: mandatory for trusted publishing
 
