@@ -7,8 +7,12 @@ from . import single_entry
 try:
     import mpmath as mp
 except ImportError:
-    pass
-    # external_module = None 
+    class mp_not_available:
+        def __getattr__(self, _):
+            raise RuntimeError(
+                "In order to use the `precise` mode, you need to install the python package mpmath"
+            )
+    mp = mp_not_available()
 
 
 def comb(n, k):
@@ -25,6 +29,7 @@ def assert_valid_entry(entry, n):
 # def M(n: int, precise=False) -> np.ndarray: ...
 # @overload
 # def M(n: int, entry: tuple, precise=False) -> float: ...
+
 
 def M(n: int, entry: Union[tuple, None] = None, precise=False) -> Union[np.ndarray, float]:
     """Self-inverse transformation matrix between Shor-Laflamme distributions $a$ and $b$.
@@ -210,7 +215,7 @@ def iT1(n: int, entry: Union[tuple, None] = None, precise=False) -> Union[np.nda
         K = mp.matrix(K)
     else:
         K = np.array(K, dtype=float)
-    
+
     for l in reversed(range(n + 1)):
         K[:, l] *= K[l, 0] / 2**(n - l)
     for l in range(n + 1):
@@ -243,7 +248,7 @@ def T3(n: int, entry: Union[tuple, None] = None, precise=False) -> Union[np.ndar
     for k in range(1, n + 1):
         for l in range(1, n + 1):
             K[k][l] = K[k - 1][l - 1] - K[k - 1][l] - K[k][l - 1]
-    
+
     if precise:
         K = mp.matrix(K)
     else:
@@ -278,7 +283,7 @@ def iT3(n: int, entry: Union[tuple, None] = None, precise=False) -> Union[np.nda
     for k in range(1, n + 1):
         for l in range(1, n + 1):
             K[k][l] = K[k - 1][l - 1] + K[k - 1][l] + K[k][l - 1]
-    
+
     if precise:
         K = mp.matrix(K)
     else:
