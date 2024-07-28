@@ -1,8 +1,14 @@
 
 import numpy as np
 from scipy.special import comb as scomb
-from typing import Union
+from typing import Union, overload
 from . import single_entry
+
+try:
+    import mpmath as mp
+except ImportError:
+    pass
+    # external_module = None 
 
 
 def comb(n, k):
@@ -15,8 +21,12 @@ def assert_valid_entry(entry, n):
     assert 0 <= entry[0] <= n and 0 <= entry[
         1] <= n, f"Matrix entry `{entry}` out of range (n={n})"
 
+# @overload
+# def M(n: int, precise=False) -> np.ndarray: ...
+# @overload
+# def M(n: int, entry: tuple, precise=False) -> float: ...
 
-def M(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
+def M(n: int, entry: Union[tuple, None] = None, precise=False) -> Union[np.ndarray, float]:
     """Self-inverse transformation matrix between Shor-Laflamme distributions $a$ and $b$.
 
     Parameters
@@ -40,14 +50,17 @@ def M(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
     for k in range(1, n + 1):
         for l in reversed(range(n)):
             K[k][l] = 3 * K[k - 1][l + 1] + K[k - 1][l] + K[k][l + 1]
-    for k in range(n + 1):
-        for l in range(n + 1):
-            K[k][l] /= 2**n
-    K = np.array(K, dtype=float)
-    return K
+    if precise:
+        return mp.matrix(K) / 2**n
+    else:
+        for k in range(n + 1):
+            for l in range(n + 1):
+                K[k][l] /= 2**n
+        K = np.array(K, dtype=float)
+        return K
 
 
-def M1(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
+def M1(n: int, entry: Union[tuple, None] = None, precise=False) -> Union[np.ndarray, float]:
     """Self-inverse transformation matrix between quantum weight enumerators $a'$ and $b'$.
 
     Parameters
@@ -67,7 +80,7 @@ def M1(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
     return np.fliplr(np.eye(n+1))
 
 
-def M2(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
+def M2(n: int, entry: Union[tuple, None] = None, precise=False) -> Union[np.ndarray, float]:
     """Self-inverse transformation matrix between quantum weight enumerators $a''$ and $b''$.
 
     Parameters
@@ -87,7 +100,7 @@ def M2(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
     return np.diag(np.resize([1, -1], n+1)[::-1])
 
 
-def T2(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
+def T2(n: int, entry: Union[tuple, None] = None, precise=False) -> Union[np.ndarray, float]:
     """Transformation matrix from Shor-Laflamme enumerators $a$ to Rains shadow enumerators $a''$. 
 
     Parameters
@@ -104,13 +117,13 @@ def T2(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
         assert_valid_entry(entry, n)
         return single_entry.T2(n, *entry)
 
-    K = M(n)
+    K = M(n, precise=precise)
     for col in range(1, n + 1, 2):
         K[:, col] *= -1.
     return K
 
 
-def iT2(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
+def iT2(n: int, entry: Union[tuple, None] = None, precise=False) -> Union[np.ndarray, float]:
     """Transformation matrix from Rains shadow enumerators $a''$ to Shor-Laflamme enumerators $a$. 
 
     Parameters
@@ -127,13 +140,13 @@ def iT2(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
         assert_valid_entry(entry, n)
         return single_entry.iT2(n, *entry)
 
-    K = M(n)
+    K = M(n, precise=precise)
     for row in range(1, n + 1, 2):
-        K[row] *= -1.
+        K[row, :] *= -1.
     return K
 
 
-def T1(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
+def T1(n: int, entry: Union[tuple, None] = None, precise=False) -> Union[np.ndarray, float]:
     """Transformation matrix from Shor-Laflamme enumerators $a$ to Rains unitary enumerators $a'$. 
 
     Parameters
@@ -158,13 +171,17 @@ def T1(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
     for l in reversed(range(0, n)):
         for k in range(l - 1, n):
             K[k][l] = K[k][l + 1] + K[k + 1][l + 1]
-    K = np.array(K, dtype=float)
+    if precise:
+        K = mp.matrix(K)
+    else:
+        K = np.array(K, dtype=float)
+
     for k in range(n + 1):
-        K[k] *= 2**(n - k) / K[k, 0]
+        K[k, :] *= 2**(n - k) / K[k, 0]
     return K
 
 
-def iT1(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
+def iT1(n: int, entry: Union[tuple, None] = None, precise=False) -> Union[np.ndarray, float]:
     """Transformation matrix from Rains unitary enumerators $a'$ to Shor-Laflamme enumerators $a$. 
 
     Parameters
@@ -189,7 +206,11 @@ def iT1(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
     for l in reversed(range(0, n)):
         for k in range(l - 1, n):
             K[k][l] = K[k][l + 1] + K[k + 1][l + 1]
-    K = np.array(K, dtype=float)
+    if precise:
+        K = mp.matrix(K)
+    else:
+        K = np.array(K, dtype=float)
+    
     for l in reversed(range(n + 1)):
         K[:, l] *= K[l, 0] / 2**(n - l)
     for l in range(n + 1):
@@ -198,7 +219,7 @@ def iT1(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
     return K
 
 
-def T3(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
+def T3(n: int, entry: Union[tuple, None] = None, precise=False) -> Union[np.ndarray, float]:
     """Transformation matrix from Rains' unitary enumerators $a'$ to Rains' shadow enumerators $a''$. 
 
     Parameters
@@ -222,13 +243,18 @@ def T3(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
     for k in range(1, n + 1):
         for l in range(1, n + 1):
             K[k][l] = K[k - 1][l - 1] - K[k - 1][l] - K[k][l - 1]
-    K = np.array(K, dtype=float)
+    
+    if precise:
+        K = mp.matrix(K)
+    else:
+        K = np.array(K, dtype=float)
+
     for l in range(n + 1):
         K[:, l] *= np.abs(K[l, 0])
-    return K * 2**-n
+    return K / 2**n
 
 
-def iT3(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
+def iT3(n: int, entry: Union[tuple, None] = None, precise=False) -> Union[np.ndarray, float]:
     """Transformation matrix from Rains' shadow enumerators $a''$ to Rains' unitary enumerators $a'$. 
 
     Parameters
@@ -252,7 +278,12 @@ def iT3(n: int, entry: Union[tuple, None] = None) -> Union[np.ndarray, float]:
     for k in range(1, n + 1):
         for l in range(1, n + 1):
             K[k][l] = K[k - 1][l - 1] + K[k - 1][l] + K[k][l - 1]
-    K = np.array(K, dtype=float)
+    
+    if precise:
+        K = mp.matrix(K)
+    else:
+        K = np.array(K, dtype=float)
+
     for k in range(n + 1):
-        K[k] *= 1 / np.abs(K[k, 0])
+        K[k, :] *= 1 / np.abs(K[k, 0])
     return K
