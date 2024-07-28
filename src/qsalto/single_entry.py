@@ -8,7 +8,7 @@ def comb(n, k):
 
 def M(n: int, i: int, j: int) -> float:
     sum = 0
-    for l in range(n + 1):
+    for l in range(i + 1):
         sum += comb(n - j, i - l) * comb(j, l) * (-1)**l * 3**(i - l)
     return sum / 2**n
 
@@ -51,13 +51,13 @@ def iT1(n: int, i: int, j: int) -> float:
 
 def T3(n: int, i: int, j: int) -> float:
     sum = 0
-    for l in range(n + 1):
+    for l in range(i + 1):
         sum += comb(n - j, i - l) * comb(j, l) * (-1)**(j - l)
     return sum * comb(n, j) / 2**n
 
 
 def iT3(n: int, i: int, j: int) -> float:
-    sum = 0.
-    for l in range(n + 1):
+    sum = 0
+    for l in range(i + 1):
         sum += comb(n - j, i - l) * comb(j, l) * (-1)**(i - l)
     return sum / comb(n, i)

@@ -62,5 +62,41 @@ class TestData(unittest.TestCase):
                 matrix = t(n)
                 for i in range(n + 1):
                     for j in range(n + 1):
-                        val = t(n, entry=[i, j])
+                        val = t(n, entry=(i, j))
                         np.testing.assert_allclose(matrix[i, j], val)
+
+    def test_single_entry_precise(self):
+        import mpmath as mp
+        for t in [M, M1, M2, T1, iT1, T2, iT2, T3, iT3]:
+            with self.subTest("", t=t):
+                n = 20
+                matrix = t(n, precise=True)
+                for i in range(n + 1):
+                    for j in range(n + 1):
+                        val = t(n, entry=(i, j), precise=True)
+                        assert mp.fabs(matrix[i, j] - val) < 1e-10
+
+    def test_1000_qubits(self):
+        for t in [M, M1, M2, T1, iT1, T2, iT2, T3, iT3]:
+            with self.subTest("", t=t):
+                t(1000)
+
+    def test_numpy_int_for_n(self):
+        for t in [M, M1, M2, T1, iT1, T2, iT2, T3, iT3]:
+            with self.subTest("", t=t):
+                n = np.int64(11)
+                matrix = t(n)
+                val = t(n, entry=(0, 0))
+
+    def test_precise_mode(self):
+        for t in [M, M1, M2, T1, iT1, T2, iT2, T3, iT3]:
+            for n in [2, 11, 37, 39, 55, 63]:
+                with self.subTest("", t=t, n=n):
+                    K1 = t(n, precise=False)
+                    K2 = t(n, precise=True)
+                    np.testing.assert_allclose(K1, np.array(K2.tolist(), dtype=float))
+
+    def test_f(self):
+        a: np.ndarray = M(3)
+        b: float = M(3, entry=(2, 3))
+        c: np.ndarray = M(3, precise=True,)
