@@ -24,6 +24,12 @@ dependencies = [
     "scipy >= 1.8.1"
 ]
 
+[project.optional-dependencies]
+Precision = [
+  "mpmath >= 1.0"
+]
+
+
 [project.urls]
 "Homepage" = "https://github.com/Mc-Zen/qsalto"
 "Bug Tracker" = "https://github.com/Mc-Zen/qsalto/issues"
