@@ -53,6 +53,9 @@ To compute the full matrices, an optimized algorithm making use of recursive pat
 
 Furthermore, the function `single_shot_estimators(n)` generates single-shot estimators for $a$, $b$, $a'$, $b'$, $a''$, and $b''$ for all possible numbers $m=0,...,n$ of singlets as an outcome of a two-copy Bell measurement. This function returns six 2D-arrays (one for each quantum weight enumerator in the order as given above) with the estimator for $m$ singlets in the $m$-th column. 
 
+### High-precision transformation matrices
+
+For some applications, a higher precision than 64 bit floating point is needed for the transformation matrices. For this purpose, each transformation features a `precise` argument (which defaults to `false`). If set to `true`, an `mpmath.matrix` is returned instead of an `np.array`. This requires [`mpmath`](https://mpmath.org/) to be installed. The precision can for example be set via `mpmath.mp.dps = 120` (more on precision with mpmath, see [here](https://mpmath.org/doc/current/basics.html#setting-the-precision)) before calling the transformation generator. 
 
 
 ## License
