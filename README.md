@@ -20,7 +20,7 @@ _transform your quantum weight enumerators_
 **qsalto** provides transformations between several (normalized) quantum weight enumerators, including
 - Shor-Laflamme enumerators[^1] $a$, $b$,
 - Rains unitary enumerators[^2] $a'$, $b'$,
-- and Rains shadow enumerators[^3] $a''$.
+- and Rains shadow enumerators[^3] $\tilde{a}$.
 
 
 We provide both 
@@ -35,23 +35,23 @@ We provide both
 The python package `qsalto` can be installed via `pip install qsalto` and features functions to generate nine classes of transformation matrices. 
 
 
-|Matrix     | Function | Transforms from ...           | ... to                        |is self-inverse|
-|-----------|----------|-------------------------------|-------------------------------|---------------|
-|$M$        |`M(n)`    |$\mathbf{a}$                   |$\mathbf{b}$                   |✅            |
-|$M'$       |`M1(n)`   |$\mathbf{a'}$                  |$\mathbf{b'}$                  |✅            |
-|$M''$      |`M2(n)`   |$\mathbf{a''}$                 |$\mathbf{b''}$                 |✅            |
-|$T'$       |`T1(n)`   |$\mathbf{a}$, $\mathbf{b}$     |$\mathbf{a'}$, $\mathbf{b'}$   |❌            |
-|$T'^{-1}$  |`iT1(n)`  |$\mathbf{a'}$, $\mathbf{b'}$   |$\mathbf{a}$, $\mathbf{b}$     |❌            |
-|$T''$      |`T2(n)`   |$\mathbf{a}$, $\mathbf{b}$     |$\mathbf{a''}$, $\mathbf{b''}$ |❌            |
-|$T''^{-1}$ |`iT2(n)`  |$\mathbf{a''}$, $\mathbf{b''}$ |$\mathbf{a}$, $\mathbf{b}$     |❌            |
-|$T'''$     |`T3(n)`   |$\mathbf{a'}$, $\mathbf{b'}$   |$\mathbf{a''}$, $\mathbf{b''}$ |❌            |
-|$T'''^{-1}$|`iT3(n)`  |$\mathbf{a''}$, $\mathbf{b''}$ |$\mathbf{a'}$, $\mathbf{b'}$   |❌            |
+|Matrix           | Function | Transforms from ...                       | ... to                                    |is self-inverse|
+|-----------------|----------|-------------------------------------------|-------------------------------------------|---------------|
+|$M$              |`M(n)`    |$\mathbf{a}$                               |$\mathbf{b}$                               |✅            |
+|$M'$             |`M1(n)`   |$\mathbf{a'}$                              |$\mathbf{b'}$                              |✅            |
+|$\tilde{M}$      |`M2(n)`   |$\mathbf{\tilde{a}}$                       |$\mathbf{\tilde{b}}$                       |✅            |
+|$T'$             |`T1(n)`   |$\mathbf{a}$, $\mathbf{b}$                 |$\mathbf{a'}$, $\mathbf{b'}$               |❌            |
+|$T'^{-1}$        |`iT1(n)`  |$\mathbf{a'}$, $\mathbf{b'}$               |$\mathbf{a}$, $\mathbf{b}$                 |❌            |
+|$\tilde{T}$            |`T2(n)`   |$\mathbf{a}$, $\mathbf{b}$                 |$\mathbf{\tilde{a}}$, $\mathbf{\tilde{b}}$ |❌            |
+|$\tilde{T}^{-1}$       |`iT2(n)`  |$\mathbf{\tilde{a}}$, $\mathbf{\tilde{b}}$ |$\mathbf{a}$, $\mathbf{b}$                 |❌            |
+|$\tilde{T}'$     |`T3(n)`   |$\mathbf{a'}$, $\mathbf{b'}$               |$\mathbf{\tilde{a}}$, $\mathbf{\tilde{b}}$ |❌            |
+|$\tilde{T}'^{-1}$|`iT3(n)`  |$\mathbf{\tilde{a}}$, $\mathbf{\tilde{b}}$ |$\mathbf{a'}$, $\mathbf{b'}$               |❌            |
 
 To compute the full matrices, an optimized algorithm making use of recursive patterns is employed. Each matrix generator also features the computation of single elements through, e.g., `M(100, entry=[3,4])` where `entry` specifies the row and column of the entry (in that order). 
 
 ### Single-shot estimators
 
-Furthermore, the function `single_shot_estimators(n)` generates single-shot estimators for $a$, $b$, $a'$, $b'$, $a''$, and $b''$ for all possible numbers $m=0,...,n$ of singlets as an outcome of a two-copy Bell measurement. This function returns six 2D-arrays (one for each quantum weight enumerator in the order as given above) with the estimator for $m$ singlets in the $m$-th column. 
+Furthermore, the function `single_shot_estimators(n)` generates single-shot estimators for $a$, $b$, $a'$, $b'$, $\tilde{a}$, and $\tilde{b}$ for all possible numbers $m=0,...,n$ of singlets as an outcome of a two-copy Bell measurement. This function returns six 2D-arrays (one for each quantum weight enumerator in the order as given above) with the estimator for $m$ singlets in the $m$-th column. 
 
 ### High-precision transformation matrices
 
