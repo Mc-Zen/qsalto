@@ -366,40 +366,26 @@ function getSelectedNorm() {
 }
 
 function matrix_name_to_math(name) {
-    let MML = "http://www.w3.org/1998/Math/MathML";
-
-    let root = document.createElementNS(MML, "msup");
-
-    let symb = document.createElementNS(MML, "mi");
-    symb.appendChild(document.createTextNode(name.replace("i", "")[0]));
-
-    let exponent = document.createElementNS(MML, "mrow");
-
-    let num_primes = 0;
-    if (name.includes("1")) { num_primes = 1; }
-    if (name.includes("2")) { num_primes = 2; }
-    if (name.includes("3")) { num_primes = 3; }
-    for (let i = 0; i < num_primes; i++) {
-        let prime = document.createElementNS(MML, "mi");
-        prime.appendChild(document.createTextNode("&#x2032;"))
-        exponent.appendChild(prime)
-    }
-
+    let inv = false
     if (name.includes("i")) {
-        let one = document.createElementNS(MML, "mn");
-        one.appendChild(document.createTextNode("1"));
-
-        let minus = document.createElementNS(MML, "mo");
-        minus.appendChild(document.createTextNode("-"));
-
-        exponent.appendChild(minus)
-        exponent.appendChild(one)
+        inv = true
+        name = name.substr(1)
     }
+    let letter = name.substr(0, 1)
+    let num = parseInt(name.substr(1))
 
-    root.appendChild(symb);
-    root.appendChild(exponent);
-
-    return root;
+    let result = letter
+    if (num == 2 || num == 3) {
+        result = "\\tilde{" + result + "}"
+    }
+    if (num == 1 || num == 3) {
+        result += "'"
+    }
+    if (inv) {
+        result += "^{-1}"
+    }
+    console.log(result, num)
+    return "\\(" + result + "\\)"
 }
 
 let hovered_canvas = null
@@ -441,10 +427,7 @@ window.addEventListener("load", function () {
             output_matrix_value.innerHTML = "[" + y + "," + x + "] = " + matrix.matrix[y][x].toString().replace("-", "−")
 
             if (hovered_canvas != canvas) {
-                var MML = "http://www.w3.org/1998/Math/MathML";
-                var math = document.createElementNS(MML, "math");
-                math.appendChild(matrix_name_to_math(matrix.name));
-                output_matrix_name.innerHTML = math.outerHTML
+                output_matrix_name.innerHTML = matrix_name_to_math(matrix.name)
                 MathJax.typeset()
                 hovered_canvas = canvas
             }
