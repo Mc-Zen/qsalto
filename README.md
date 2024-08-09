@@ -28,7 +28,7 @@ We provide both
 - a web viewer for visualizing the transformation matrices at https://mc-zen.github.io/qsalto.
 
 
-<img src="https://github.com/Mc-Zen/qsalto/raw/main/docs/media/transformation-diagram.svg" width="420">
+<a href="https://mc-zen.github.io/qsalto"><img src="https://github.com/Mc-Zen/qsalto/raw/main/docs/media/transformation-diagram.svg" width="420"></a>
 
 ## Python package
 
