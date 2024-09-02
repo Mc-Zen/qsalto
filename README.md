@@ -62,7 +62,7 @@ For some applications, a higher precision than 64 bit floating point is needed f
 
 This library is distributed under the MIT License.
 
-If you want to support work like this, please cite our paper: tba
+If you want to support work like this, please cite our paper: https://arxiv.org/abs/2408.16914
 
 
 
