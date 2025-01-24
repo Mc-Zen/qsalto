@@ -1,6 +1,6 @@
 
 import numpy as np
-from scipy.special import comb as scomb
+from math import comb as scomb
 from typing import Union, overload
 from . import single_entry
 from . import single_entry_precise

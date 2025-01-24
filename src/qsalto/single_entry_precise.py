@@ -1,5 +1,5 @@
 
-from scipy.special import comb as scomb
+from math import comb as scomb
 
 
 try:
