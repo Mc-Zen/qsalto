@@ -1,7 +1,7 @@
 import unittest
 import numpy as np
 from src.qsalto import *
-from scipy.special import comb
+from math import comb
 
 
 class TestData(unittest.TestCase):
