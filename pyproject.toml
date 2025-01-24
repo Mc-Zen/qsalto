@@ -7,7 +7,7 @@ name = "qsalto"
 version = "0.2.1"
 description = "Transformations between quantum weight enumerators"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 authors = [{ name = "Mc-Zen"}]
 license = { file = "LICENSE.txt" }
 classifiers = [
