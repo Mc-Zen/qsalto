@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "qsalto"
-version = "0.2.0"
+version = "0.2.1"
 description = "Transformations between quantum weight enumerators"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 authors = [{ name = "Mc-Zen"}]
 license = { file = "LICENSE.txt" }
 classifiers = [
@@ -20,8 +20,7 @@ classifiers = [
 ]
 keywords = ["quantum information", "quantum weight enumerators", "Shor-Laflamme", "Rains unitary", "Rains shadow"]
 dependencies = [
-    "numpy >= 1.22",
-    "scipy >= 1.8.1"
+    "numpy >= 1.22"
 ]
 
 [project.optional-dependencies]

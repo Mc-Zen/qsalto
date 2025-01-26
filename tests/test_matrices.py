@@ -1,7 +1,7 @@
 import unittest
 import numpy as np
 from src.qsalto import *
-from scipy.special import comb
+from math import comb
 
 
 class TestData(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestData(unittest.TestCase):
         for n in range(2, 20):
             apd = np.full(n + 1, 1)
             sld = iT1(n) @ apd
-            np.testing.assert_equal(sld, comb(n, np.arange(n+1)) / 2**n)
+            np.testing.assert_equal(sld, np.array([comb(n, i) / 2**n for i in np.arange(n+1)]))
 
             tpd = T3(n) @ apd
             np.testing.assert_almost_equal(tpd[n], 1)
@@ -47,7 +47,7 @@ class TestData(unittest.TestCase):
 
             sld = iT1(n) @ apd
             ks = np.arange(n+1)
-            ghz_sld = comb(n, ks) * (1+(-1)**ks) / 2
+            ghz_sld = np.array([comb(n, i) * (1+(-1)**i) / 2 for i in ks])
             ghz_sld[n] += 2**(n-1)
             ghz_sld /= 2**n
             np.testing.assert_equal(sld, ghz_sld)

@@ -1,5 +1,5 @@
 
-from scipy.special import comb as scomb
+from math import comb as scomb
 
 
 try:
@@ -10,7 +10,8 @@ except ImportError:
 
 
 def comb(n, k):
-    return scomb(n, k, exact=True)
+    if k < 0: return 0
+    else: return scomb(n, k)
 
 
 def M(n: int, i: int, j: int):

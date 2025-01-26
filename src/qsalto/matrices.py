@@ -1,6 +1,6 @@
 
 import numpy as np
-from scipy.special import comb as scomb
+from math import comb as scomb
 from typing import Union, overload
 from . import single_entry
 from . import single_entry_precise
@@ -15,7 +15,8 @@ def get_single_entry(precise):
     return single_entry_precise if precise else single_entry
 
 def comb(n, k):
-    return scomb(n, k, exact=True)
+    if k < 0: return 0
+    else: return scomb(n, k)
 
 
 def assert_valid_entry(entry, n):
