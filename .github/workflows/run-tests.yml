@@ -27,9 +27,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        # pip install .
-        pip install numpy>=1.22
-        pip install mpmath>=1.0
+        pip install .[Precision]
     - name: Test with unittest
       run: |
         python -m unittest
