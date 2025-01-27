@@ -32,7 +32,26 @@ We provide both
 
 ## Python package
 
-The python package `qsalto` can be installed via `pip install qsalto` and features functions to generate nine classes of transformation matrices. 
+The python package `qsalto` can be installed via `pip install qsalto` and features functions to generate nine classes of transformation matrices. You can install it via
+```
+pip install qsalto
+```
+or 
+```
+pip install qsalto[Precision]
+```
+if you want to make use of high-precision transformation matrices (see [below](#high-precision-transformation-matrices)). This variant will also install the optional dependency [`mpmath`](https://mpmath.org/). 
+
+After installation you can use the package as follows:
+```py
+import qsalto
+
+a = ..  # some normalized Shor-Laflamme distribution
+n = len(a) - 1
+
+# Transform it into Rains shadow enumerators
+a2 = qsalto.T2(n) @ a  
+```
 
 
 |Matrix           | Function | Transforms from ...                       | ... to                                    |is self-inverse|
