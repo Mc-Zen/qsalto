@@ -8,8 +8,8 @@ from . import single_entry_precise
 try:
     import mpmath as mp
 except ImportError:
-    import mp_not_available
-    mp = mp_not_available.mp_error()
+    from .mp_not_available import mp_error
+    mp = mp_error()
 
 def get_single_entry(precise):
     return single_entry_precise if precise else single_entry
