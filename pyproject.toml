@@ -8,7 +8,7 @@ version = "0.2.2"
 description = "Transformations between quantum weight enumerators"
 readme = "README.md"
 requires-python = ">=3.8"
-authors = [{ name = "Mc-Zen"}]
+authors = [{ name = "Mc-Zen" }]
 license = { file = "LICENSE.txt" }
 classifiers = [
     "Programming Language :: Python :: 3",

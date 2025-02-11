@@ -32,7 +32,7 @@ We provide both
 
 ## Python package
 
-The python package `qsalto` can be installed via `pip install qsalto` and features functions to generate nine classes of transformation matrices. You can install it via
+The python package features functions to generate nine classes of transformation matrices. You can install it via
 ```
 pip install qsalto
 ```
